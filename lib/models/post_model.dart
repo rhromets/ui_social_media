@@ -1,12 +1,14 @@
-import 'package:flutter_social_ui/models/user_model.dart';
+
+
+import 'package:social_media_ui/models/user_model.dart';
 
 class Post {
-  final String imageUrl;
-  final User author;
-  final String title;
-  final String location;
-  final int likes;
-  final int comments;
+  final String? imageUrl;
+  final User? author;
+  final String? title;
+  final String? location;
+  final int? likes;
+  final int? comments;
 
   Post({
     this.imageUrl,

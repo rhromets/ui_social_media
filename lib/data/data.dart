@@ -1,7 +1,6 @@
-import 'package:flutter_social_ui/models/post_model.dart';
-import 'package:flutter_social_ui/models/user_model.dart';
+import 'package:social_media_ui/models/post_model.dart';
+import 'package:social_media_ui/models/user_model.dart';
 
-// Posts
 final _post0 = Post(
   imageUrl: 'assets/images/post0.jpg',
   author: User(),
