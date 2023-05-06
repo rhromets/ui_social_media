@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:social_media_ui/data/data.dart';
 import 'package:social_media_ui/screens/home_screen.dart';
 import 'package:social_media_ui/screens/login_screen.dart';
+import 'package:social_media_ui/screens/profile_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -37,19 +38,29 @@ class CustomDrawer extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Container(
-                        height: 100.0,
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              width: 3.0,
-                              color: Theme.of(context).primaryColor),
+                      GestureDetector(
+                        onTap: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ProfileScreen(
+                              user: currentUser,
+                            ),
+                          ),
                         ),
-                        child: ClipOval(
-                          child: Image(
-                            image: AssetImage(currentUser.profileImageUrl!),
-                            fit: BoxFit.cover,
+                        child: Container(
+                          height: 100.0,
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                width: 3.0,
+                                color: Theme.of(context).primaryColor),
+                          ),
+                          child: ClipOval(
+                            child: Image(
+                              image: AssetImage(currentUser.profileImageUrl!),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -82,7 +93,17 @@ class CustomDrawer extends StatelessWidget {
           _buildDrawerOption(const Icon(Icons.chat), 'Chat', () {}),
           _buildDrawerOption(const Icon(Icons.location_on), 'Map', () {}),
           _buildDrawerOption(
-              const Icon(Icons.account_circle), 'Your Profile', () {}),
+            const Icon(Icons.account_circle),
+            'Your Profile',
+            () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ProfileScreen(
+                  user: currentUser,
+                ),
+              ),
+            ),
+          ),
           _buildDrawerOption(const Icon(Icons.settings), 'Settings', () {}),
           Expanded(
             child: Align(
